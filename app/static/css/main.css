@@ -1,12 +1,25 @@
-* {
+html {
+  height: 100%;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+  -webkit-box-sizing: inherit;
+          box-sizing: inherit;
   margin: 0;
   padding: 0;
 }
 
 body {
-  margin: 0;
-  font-family: Arial, Helvetica, sans-serif;
   font-size: .8rem;
+  position: relative;
+  margin: 0;
+  padding-bottom: 4rem;
+  min-height: 100%;
+  font-family: "Helvetica Neue", Arial, sans-serif;
 }
 
 @media screen and (min-width: 440px) {
@@ -50,7 +63,7 @@ header div.title div.logo {
 }
 
 header div.title div.logo img {
-  height: 22px;
+  height: 2rem;
   width: 100px;
   padding: 0.4rem;
 }
@@ -80,6 +93,10 @@ header div.title ul.menu-wrap li.menu-icon a {
   text-align: center;
   padding: 14px 16px;
   text-decoration: none;
+}
+
+header div.title ul.menu-wrap li.menu-icon a:active {
+  background: #000000;
 }
 
 @media screen and (min-width: 440px) {
@@ -112,13 +129,13 @@ header div.title ul.menu-wrap li.menus ul li {
 header div.title ul.menu-wrap li.menus ul li a {
   color: white;
   text-align: center;
-  padding: 14px 16px;
+  padding: .6rem 4px;
   text-decoration: none;
   display: block;
 }
 
 header div.title ul.menu-wrap li.menus ul li a:hover {
-  background: rgba(14, 175, 250, 0.212);
+  border-bottom: 2px solid #00e676;
 }
 
 header div.title ul.menu-wrap li.menus ul li.active a {
@@ -145,9 +162,13 @@ header div.title ul.menu-wrap li.menus ul li.active a:hover {
   header div.title ul.menu-wrap li.menus ul li a {
     display: inline-block;
   }
+  header div.title ul.menu-wrap li.menus ul li a:hover {
+    background: rgba(14, 175, 250, 0.212);
+  }
 }
 
 main div.topbar {
+  width: 100%;
   background: #eceff1;
   padding: 0.4rem;
 }
@@ -826,12 +847,12 @@ div.matrix form div.input-grp button {
 }
 
 footer {
-  padding: 0.2rem 0;
-}
-
-footer div.row1 {
-  background: #66ffa6;
-  margin: auto;
-  padding: 10px;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 1rem;
+  background-color: #efefef;
+  text-align: center;
 }
 /*# sourceMappingURL=main.css.map */

@@ -5,6 +5,7 @@ from flask import Flask, url_for, session
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 from flask_login import LoginManager
+from flask_admin import Admin
 
 import os
 import collections
@@ -19,6 +20,17 @@ db = SQLAlchemy()
 # Login manager
 login_manager = LoginManager()
 
+# Flask admin
+admin = Admin(name='FX REC', template_mode='bootstrap3')
+
+
+def add_models_to_admin():
+    from flask_admin.contrib.sqla import ModelView
+    from app.models import Role, Privilege, Group
+    admin.add_view(ModelView(Role, db.session))
+    admin.add_view(ModelView(Privilege, db.session))
+    admin.add_view(ModelView(Group, db.session))
+
 
 def main_nav(active):
     Nav = collections.namedtuple('Nav', 'name path active')
@@ -27,9 +39,6 @@ def main_nav(active):
         Nav(name='Members', path='/members', active=active == 'Members'),
         Nav(name='Contributions', path='/contributions',
             active=active == 'Contributions'),
-        Nav(name='Groups', path='/groups', active=active == 'Groups'),
-        Nav(name='Privileges',
-            path='/privileges', active=active == 'Privileges'),
         Nav(name='Roles',
             path='/roles', active=active == 'Roles')
     ]
@@ -67,6 +76,21 @@ def create_app(config_name):
         user = User.get()
         return user
 
+    '''
+    Copyright current year
+    '''
+    @app.context_processor
+    def inject_cpyear():
+        from datetime import datetime
+        return {'copyright_year': datetime.now().year}
+
+    '''
+    Flask admin
+    '''
+    app.config['FLASK_ADMIN_SWATCH'] = 'cerulean'
+    admin.init_app(app)
+    add_models_to_admin()
+
     migrate = Migrate(app, db)
     from app import models
     from app import users
@@ -86,9 +110,11 @@ def create_app(config_name):
     app.register_blueprint(users_blueprint,
                            url_prefix='/users')
 
+    '''
     from .privileges import privileges as privileges_blueprint
     app.register_blueprint(privileges_blueprint,
                            url_prefix='/privileges')
+    '''
 
     from .roles import roles as roles_blueprint
     app.register_blueprint(roles_blueprint,

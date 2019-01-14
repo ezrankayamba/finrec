@@ -24,19 +24,35 @@ $break-medium: 780px;
   @return map-get($colors, $name);
 }
 
-* {
+
+
+html {
+  height: 100%;
+  box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
   margin: 0;
   padding: 0;
 }
 
 body {
-  margin: 0;
-  font-family: Arial, Helvetica, sans-serif;
   font-size: .8rem;
 
   @media screen and (min-width: $break-small) {
     font-size: .9rem;
   }
+
+  position: relative;
+  margin: 0;
+  padding-bottom: 4rem;
+  min-height: 100%;
+  font-family: "Helvetica Neue",
+  Arial,
+  sans-serif;
 }
 
 input[type="text"],
@@ -69,7 +85,7 @@ header {
       display: inline;
 
       img {
-        height: 22px;
+        height: 2rem;
         width: 100px;
         padding: $padding;
 
@@ -97,6 +113,10 @@ header {
           text-align: center;
           padding: 14px 16px;
           text-decoration: none;
+
+          &:active {
+            background: #000000;
+          }
         }
 
         @media screen and (min-width: $break-small) {
@@ -108,7 +128,6 @@ header {
         position: absolute;
         top: 2.5rem;
         right: $padding;
-
 
         &.show {
           ul {
@@ -128,13 +147,13 @@ header {
             a {
               color: white;
               text-align: center;
-              padding: 14px 16px;
+              padding: .6rem 4px;
               text-decoration: none;
               display: block;
-            }
 
-            a:hover {
-              background: rgba(14, 175, 250, 0.212);
+              &:hover {
+                border-bottom: 2px solid color(secondaryColor);
+              }
             }
 
             &.active a {
@@ -163,6 +182,10 @@ header {
               a {
                 display: inline-block;
               }
+
+              a:hover {
+                background: rgba(14, 175, 250, 0.212);
+              }
             }
           }
         }
@@ -174,7 +197,7 @@ header {
 main {
 
   div.topbar {
-
+    width: 100%;
     background: color(secondaryTextColor);
     padding: $padding;
 
@@ -336,7 +359,6 @@ main {
 
 .tablebar {
   padding: $padding 0;
-
 
   div.search {
     padding-bottom: $padding;
@@ -826,11 +848,13 @@ div.matrix {
 }
 
 footer {
-  padding: 0.2rem 0;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 1rem;
+  background-color: #efefef;
+  text-align: center;
 
-  div.row1 {
-    background: color(secondaryLightColor);
-    margin: auto;
-    padding: 10px;
-  }
+  div.row1 {}
 }
