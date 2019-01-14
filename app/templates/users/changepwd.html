@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block title %}
+Change password
+{% endblock %}
+
+{% block content %}
+<div class="content-wrap">
+    <form action="{{ url_for('users.changepwd') }}{% if next %}?next={{ next }}{% endif %}" method="post" id="login-form">
+        <h3>Change password form</h3>
+        <div class="input-wrap">
+            <label for="username">Your username</label>
+            <input type="text" name="username" id="username" placeholder="Enter your username" value="{{ current_user.username }}"
+                readonly="readonly" />
+        </div>
+        <div class="input-wrap">
+            <label for="password">New password</label>
+            <input type="password" name="password" id="password" placeholder="Enter new password" />
+        </div>
+        <div class="controls input-wrap">
+            <button type="submit">Change password</button>
+        </div>
+    </form>
+
+</div>
+{% endblock %}

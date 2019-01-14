@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block title %}
+Login
+{% endblock %}
+
+{% block content %}
+<div class="content-wrap">
+    <form action="{{ url_for('users.login') }}{% if next %}?next={{ next }}{% endif %}" method="post" id="login-form">
+        <h3>Login form</h3>
+        <div class="input-wrap">
+            <label for="username">Username</label>
+            <input type="text" name="username" id="username" placeholder="Enter your username" />
+        </div>
+        <div class="input-wrap">
+            <label for="password">Password</label>
+            <input type="password" name="password" id="password" placeholder="Enter your password" />
+        </div>
+        <div class="controls input-wrap">
+            <div class="checkbox-wrap">
+                <input type="checkbox" name="remember_me" /><label for="remember_me">Remember me</label>
+            </div>
+            <button type="submit">Login</button>
+        </div>
+
+        <div class="signup">
+            <span>Not registered?</span>
+            <a href="{{ url_for('users.signup') }}">Register here</a>
+        </div>
+    </form>
+
+</div>
+{% endblock %}

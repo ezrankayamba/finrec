@@ -1,0 +1,837 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: .8rem;
+}
+
+@media screen and (min-width: 440px) {
+  body {
+    font-size: .9rem;
+  }
+}
+
+input[type="text"],
+input[type="search"] {
+  border: 1px solid #eee;
+}
+
+input:-moz-read-only {
+  outline: none;
+}
+
+input:read-only {
+  outline: none;
+}
+
+button.search {
+  border: none;
+  background: transparent;
+  border: 1px solid #eee;
+  border-left: none;
+}
+
+button.search i {
+  color: #CCC;
+}
+
+header {
+  padding: 0.4rem;
+  background: #48a999;
+  color: #ffffff;
+}
+
+header div.title div.logo {
+  display: inline;
+}
+
+header div.title div.logo img {
+  height: 22px;
+  width: 100px;
+  padding: 0.4rem;
+}
+
+@media screen and (min-width: 440px) {
+  header div.title div.logo img {
+    height: 30px;
+    width: 140px;
+  }
+}
+
+header div.title ul.menu-wrap {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  float: right;
+}
+
+header div.title ul.menu-wrap li.menu-icon {
+  display: inline;
+}
+
+header div.title ul.menu-wrap li.menu-icon a {
+  display: inline-block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+@media screen and (min-width: 440px) {
+  header div.title ul.menu-wrap li.menu-icon {
+    display: none;
+  }
+}
+
+header div.title ul.menu-wrap li.menus {
+  position: absolute;
+  top: 2.5rem;
+  right: 0.4rem;
+}
+
+header div.title ul.menu-wrap li.menus.show ul {
+  display: block;
+  z-index: 99;
+}
+
+header div.title ul.menu-wrap li.menus ul {
+  background: #004c40;
+  border: 1px solid #ffffff;
+  display: none;
+}
+
+header div.title ul.menu-wrap li.menus ul li {
+  display: block;
+}
+
+header div.title ul.menu-wrap li.menus ul li a {
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+header div.title ul.menu-wrap li.menus ul li a:hover {
+  background: rgba(14, 175, 250, 0.212);
+}
+
+header div.title ul.menu-wrap li.menus ul li.active a {
+  color: #00e676;
+}
+
+header div.title ul.menu-wrap li.menus ul li.active a:hover {
+  background: none;
+}
+
+@media screen and (min-width: 440px) {
+  header div.title ul.menu-wrap li.menus {
+    position: unset;
+    display: inline;
+  }
+  header div.title ul.menu-wrap li.menus ul {
+    display: inline;
+    background: none;
+    border: none;
+  }
+  header div.title ul.menu-wrap li.menus ul li {
+    display: inline;
+  }
+  header div.title ul.menu-wrap li.menus ul li a {
+    display: inline-block;
+  }
+}
+
+main div.topbar {
+  background: #eceff1;
+  padding: 0.4rem;
+}
+
+main div.topbar div.breadcrumbs {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+}
+
+main div.topbar div.breadcrumbs ul li {
+  display: inline;
+}
+
+main div.topbar div.breadcrumbs ul li a {
+  text-decoration: none;
+  color: #3366ff;
+}
+
+main div.topbar div.breadcrumbs ul li:before {
+  padding: 0.4rem;
+  color: #ccc;
+  content: "/\00a0";
+}
+
+main div.topbar div.user a {
+  text-decoration: none;
+  color: #3366ff;
+}
+
+main div.topbar div.user span {
+  font-style: italic;
+}
+
+main div.topbar hr {
+  border: 1px solid #F3F3F3;
+  margin: 4px 0;
+}
+
+@media screen and (min-width: 440px) {
+  main div.topbar {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+  }
+  main div.topbar hr {
+    display: none;
+  }
+}
+
+main div.flash {
+  text-align: center;
+}
+
+main div.flash div.flashes {
+  background: #FCFCFC;
+  display: inline-block;
+  border: 1px solid #eee;
+  text-align: center;
+  position: relative;
+  padding: 0.4rem;
+  text-align: left;
+}
+
+main div.flash div.flashes span {
+  position: absolute;
+  right: 0px;
+  top: 0px;
+  font-size: 1rem;
+}
+
+main div.flash div.flashes span a {
+  text-decoration: none;
+  margin: 0.36rem;
+  font-weight: bolder;
+  color: #FF3333;
+}
+
+main div.flash div.flashes ul {
+  display: inline-block;
+  margin: 0;
+  list-style: none;
+  margin-top: .5rem;
+  margin-right: 1.2rem;
+}
+
+main .card {
+  background: #fff;
+  border-radius: 2px;
+}
+
+main .card.card-1 {
+  -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+          box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  -webkit-transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+main div.container {
+  padding: 0.4rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin: auto;
+}
+
+@media screen and (min-width: 440px) {
+  main div.container {
+    width: 86%;
+    padding: 1rem;
+  }
+}
+
+@media screen and (min-width: 780px) {
+  main div.container {
+    width: 64%;
+    padding: 2rem;
+  }
+}
+
+main div.container div.content {
+  padding: 0.4rem;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+main div.container div.content .content-wrap.table-container {
+  width: 100%;
+}
+
+main div.container div.content .content-wrap.home ol {
+  padding: 0.4rem;
+  margin-left: 0.8rem;
+}
+
+main div.container div.content .flash {
+  border: 1px solid #eee;
+  text-align: center;
+  padding: 0.4rem;
+  border-radius: 0.2rem;
+  position: relative;
+}
+
+main div.container div.content .flash span {
+  position: absolute;
+  right: -4px;
+  top: -4px;
+  font-size: 0.64rem;
+  border-radius: 2px;
+  border: 1px solid #eee;
+  background: #fff;
+}
+
+main div.container div.content .flash span a {
+  text-decoration: none;
+  margin: 0.25rem;
+  font-weight: bolder;
+  color: #ff3333;
+}
+
+.tablebar {
+  padding: 0.4rem 0;
+}
+
+.tablebar div.search {
+  padding-bottom: 0.4rem;
+}
+
+.tablebar div.search form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.tablebar div.search form input {
+  display: inline-block;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+}
+
+.tablebar div.search form input,
+.tablebar div.search form button {
+  padding: 0.4rem;
+}
+
+.tablebar div.table-controls {
+  text-align: right;
+}
+
+.tablebar div.table-controls a {
+  background: #3366ff;
+  border-radius: 3px;
+  padding: 5px 12px;
+  color: #ffffff;
+  display: inline-block;
+  text-align: center;
+  text-shadow: 1px 1px #000000;
+  text-decoration: none;
+}
+
+.tablebar div.table-controls a.danger {
+  background: #ff3333;
+}
+
+@media screen and (min-width: 440px) {
+  .tablebar {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+  }
+  .tablebar div.search {
+    -webkit-box-flex: 1;
+        -ms-flex: 1;
+            flex: 1;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    padding-bottom: 0;
+  }
+  .tablebar div.search form {
+    -webkit-box-flex: 1;
+        -ms-flex: 1;
+            flex: 1;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    margin-right: 4rem;
+  }
+  .tablebar div.search form input {
+    -webkit-box-flex: 1;
+        -ms-flex: 1;
+            flex: 1;
+  }
+  .tablebar div.table-controls {
+    padding: 0.4rem 0;
+  }
+  .tablebar div.table-controls a {
+    padding: 0.4rem;
+  }
+}
+
+@media screen and (min-width: 780px) {
+  .tablebar div.search form {
+    margin-right: 10rem;
+  }
+}
+
+table.manage {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+table.manage tr th,
+table.manage tr td {
+  border: 1px solid #eee;
+  text-align: left;
+  padding: 0.4rem;
+}
+
+table.manage tr th ul.manage-btns,
+table.manage tr td ul.manage-btns {
+  list-style-type: none;
+}
+
+table.manage tr th ul.manage-btns li,
+table.manage tr td ul.manage-btns li {
+  display: block;
+}
+
+table.manage tr th ul.manage-btns li a,
+table.manage tr td ul.manage-btns li a {
+  color: #3366ff;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  padding: 0.4rem;
+  display: block;
+  text-align: center;
+  text-decoration: none;
+}
+
+table.manage tr th ul.manage-btns li:not(:last-child) a,
+table.manage tr td ul.manage-btns li:not(:last-child) a {
+  border-bottom: none;
+  border-radius: 0;
+}
+
+table.manage tr th ul.manage-btns li:last-child a,
+table.manage tr td ul.manage-btns li:last-child a {
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+table.manage tr th ul.manage-btns li:first-child a,
+table.manage tr td ul.manage-btns li:first-child a {
+  border-top: 1px solid #ccc;
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+}
+
+table.manage tr th ul.manage-btns li.delete a,
+table.manage tr td ul.manage-btns li.delete a {
+  color: #ff3333;
+}
+
+@media screen and (min-width: 440px) {
+  table.manage tr th ul.manage-btns li,
+  table.manage tr td ul.manage-btns li {
+    display: inline;
+  }
+  table.manage tr th ul.manage-btns li a,
+  table.manage tr td ul.manage-btns li a {
+    display: inline-block;
+  }
+  table.manage tr th ul.manage-btns li:not(:last-child) a,
+  table.manage tr td ul.manage-btns li:not(:last-child) a {
+    color: #3366ff;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    padding: 0.4rem;
+    display: inline-block;
+    text-align: center;
+    text-decoration: none;
+  }
+  table.manage tr th ul.manage-btns li:last-child a,
+  table.manage tr td ul.manage-btns li:last-child a {
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+  }
+  table.manage tr th ul.manage-btns li.delete a,
+  table.manage tr td ul.manage-btns li.delete a {
+    color: #ff3333;
+  }
+}
+
+table.manage tr th:first-child,
+table.manage tr td:last-child {
+  width: 1%;
+  white-space: nowrap;
+}
+
+form.form {
+  display: inline-block;
+}
+
+form.form fieldset {
+  padding: 0.4rem;
+  border: none;
+}
+
+form.form fieldset legend {
+  margin: 0 0.8rem;
+}
+
+form.form fieldset div.input-grp {
+  padding: 0.4rem;
+}
+
+form.form fieldset div.input-grp input {
+  border: none;
+}
+
+form.form fieldset div.input-grp button {
+  background: #3366ff;
+  border-color: transparent;
+  padding: 5px 12px;
+  color: #ffffff;
+  text-align: center;
+  float: right;
+  border-radius: .3rem;
+}
+
+form.form fieldset div.input-grp.select {
+  border-bottom: solid 1.2px #ccc;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  margin-bottom: 8px;
+  padding: 0 0.4rem;
+}
+
+form.form fieldset div.input-grp.select select {
+  border: none;
+  outline: 0;
+  width: 100%;
+  padding: 0.4rem 0;
+}
+
+form.form fieldset div.input-grp.select select option {
+  padding: 0.4rem;
+}
+
+form.form fieldset div.input-grp.select label {
+  color: rgba(0, 0, 0, 0.5);
+  -webkit-transform: translate(0, 0) scale(0.75);
+          transform: translate(0, 0) scale(0.75);
+}
+
+form.form fieldset .float-container {
+  border-bottom: solid 1.2px #ccc;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  margin-bottom: 8px;
+  padding: 0 0.4rem;
+  position: relative;
+  /* * active label */
+}
+
+form.form fieldset .float-container input {
+  border: none;
+  outline: 0;
+  padding: 16px 0 0;
+  width: 100%;
+}
+
+form.form fieldset .float-container label {
+  position: absolute;
+  -webkit-transform-origin: top left;
+          transform-origin: top left;
+  -webkit-transform: translate(0, 16px) scale(1);
+          transform: translate(0, 16px) scale(1);
+  -webkit-transition: all 0.1s ease-in-out;
+  transition: all 0.1s ease-in-out;
+  display: none;
+  color: rgba(0, 0, 0, 0.5);
+}
+
+form.form fieldset .float-container.active label {
+  -webkit-transform: translate(0, 0) scale(0.75);
+          transform: translate(0, 0) scale(0.75);
+}
+
+form.form fieldset .float-container:active {
+  border-bottom: solid 1.2px #3366ff;
+}
+
+#login-form div.input-wrap {
+  padding: 0.4rem;
+}
+
+#login-form div.input-wrap label,
+#login-form div.input-wrap input {
+  display: block;
+}
+
+#login-form div.input-wrap input {
+  padding: 0.4rem;
+  border: 1px solid #eee;
+  border-radius: .2rem;
+}
+
+#login-form div.input-wrap.controls {
+  -ms-flex-line-pack: justify;
+      align-content: space-between;
+}
+
+#login-form div.input-wrap.controls div.checkbox-wrap {
+  display: inline-block;
+}
+
+#login-form div.input-wrap.controls div.checkbox-wrap input[type="checkbox"],
+#login-form div.input-wrap.controls div.checkbox-wrap label {
+  display: inline-block;
+  padding: 0.4rem;
+}
+
+#login-form div.input-wrap.controls button {
+  background: #3366ff;
+  border-color: transparent;
+  padding: 5px 12px;
+  color: #ffffff;
+  text-align: center;
+  float: right;
+  border-radius: .3rem;
+}
+
+#login-form div.signup {
+  margin: 0.8rem 0;
+  padding: 0.4rem;
+}
+
+#login-form div.signup a {
+  color: #3366ff;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  padding: 0.4rem;
+  display: inline-block;
+  text-align: center;
+  text-decoration: none;
+}
+
+div.matrix form {
+  margin: 0.8rem;
+}
+
+div.matrix form ul {
+  list-style: none;
+}
+
+div.matrix form div.input-grp {
+  padding: 0.4rem;
+}
+
+div.matrix form div.input-grp input {
+  border: none;
+  padding: 0.4rem;
+}
+
+div.matrix form div.input-grp label {
+  padding: 0.4rem;
+}
+
+div.matrix form div.input-grp button {
+  background: #3366ff;
+  border-color: transparent;
+  padding: 5px 12px;
+  color: #ffffff;
+  text-align: center;
+  float: right;
+  border-radius: .3rem;
+}
+
+#member-contributions div.profile {
+  padding: 0.4rem;
+}
+
+#member-contributions div.profile div.row {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 0.4rem;
+}
+
+#member-contributions div.profile div.row div.label {
+  width: 10rem;
+  text-align: right;
+  padding-right: 0.4rem;
+  font-weight: bold;
+}
+
+#member-contributions div.payments {
+  padding: 0.4rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+#member-contributions div.payments div.pending,
+#member-contributions div.payments div.recent {
+  padding: 0.4rem;
+}
+
+#member-contributions div.payments div.pending h3,
+#member-contributions div.payments div.recent h3 {
+  border-bottom: 1px solid #CCC;
+  font-weight: normal;
+  line-height: 2rem;
+  margin-bottom: 0.8rem;
+}
+
+#member-contributions div.payments div.recent div.row {
+  padding: 0 0.4rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+#member-contributions div.payments div.recent div.row ul.main {
+  display: inline;
+  list-style: none;
+  padding-left: 0.4rem;
+}
+
+#member-contributions div.payments div.recent div.row ul.main li ul.details {
+  list-style: none;
+  padding-bottom: 0.4rem;
+}
+
+#member-contributions div.payments div.recent div.row ul.main li ul.details li {
+  padding: 2px 0;
+}
+
+#member-contributions div.payments div.recent div.row ul.main li ul.details li span.amount {
+  color: #3366ff;
+  font-weight: bold;
+}
+
+#member-contributions div.payments div.recent div.row i {
+  color: #66ffa6;
+  display: inline-block;
+}
+
+#member-contributions div.payments div.pending {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+}
+
+#member-contributions div.payments div.pending table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+#member-contributions div.payments div.pending table th,
+#member-contributions div.payments div.pending table td {
+  border: 1px solid #eee;
+  text-align: left;
+  padding: 0.4rem;
+}
+
+#member-contributions div.payments div.pending table th div.pay,
+#member-contributions div.payments div.pending table td div.pay {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+#member-contributions div.payments div.pending table th div.pay form input,
+#member-contributions div.payments div.pending table td div.pay form input {
+  width: 5rem;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  padding: 0.4rem;
+}
+
+#member-contributions div.payments div.pending table th div.pay form button,
+#member-contributions div.payments div.pending table td div.pay form button {
+  color: #3366ff;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  padding: 0.4rem;
+  display: inline-block;
+  text-align: center;
+  text-decoration: none;
+  background: transparent;
+  font-weight: bold;
+}
+
+#member-contributions div.payments div.pending table th div.pay form button:disabled,
+#member-contributions div.payments div.pending table td div.pay form button:disabled {
+  color: rgba(51, 102, 255, 0.1);
+}
+
+#member-contributions div.payments div.pending table th:first-child,
+#member-contributions div.payments div.pending table td:last-child {
+  width: 1%;
+  white-space: nowrap;
+}
+
+footer {
+  padding: 0.2rem 0;
+}
+
+footer div.row1 {
+  background: #66ffa6;
+  margin: auto;
+  padding: 10px;
+}
+/*# sourceMappingURL=main.css.map */

@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block title %}
+Roles
+{% endblock %}
+
+{% block breadcrumbs %}
+<ul>
+    <li><a href="/">Home</a></li>
+    <li><a href="{{ url_for('roles.index') }}">Roles</a></li>
+    <li><span>Manage</span></li>
+</ul>
+{% endblock %}
+
+{% block content %}
+<div class="content-wrap">
+    <h3>{% if role %}Edit {% else %}Add new {% endif %} role</h3>
+    <form class="form" action="{{ url_for('roles.manage') }}" method="post">
+        <fieldset>
+            <input type="hidden" name="id" {% if group %} value="{{ role.id }}" {% endif %} />
+            <div>
+                <div class="input-grp float-container">
+                    <label for="name">Name:</label>
+                    <input autocomplete="off" type="text" name="name" id="name" data-placeholder="Enter name" {% if
+                        role %} value="{{ role.name }}" {% endif %} />
+                </div>
+                <div class="input-grp">
+                    <button type="submit">Save</button>
+                </div>
+            </div>
+        </fieldset>
+    </form>
+</div>
+{% endblock %}

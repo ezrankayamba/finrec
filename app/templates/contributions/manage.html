@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block title %}
+Members
+{% endblock %}
+
+{% block breadcrumbs %}
+<ul>
+    <li><a href="/">Home</a></li>
+    <li><a href="/contributions">Contributions</a></li>
+    <li><span>Manage</span></li>
+</ul>
+{% endblock %}
+
+{% block content %}
+<div class="content-wrap">
+    <h3>{% if contr %}Edit {% else %}Add new {% endif %} contribution</h3>
+    <form class="form" action="/contributions/manage" method="post">
+        <fieldset>
+            <input type="hidden" name="id" {% if contr %} value="{{ contr.id }}" {% endif %} />
+            <div>
+                <div class="input-grp float-container">
+                    <label for="name">Name:</label>
+                    <input autocomplete="off" type="text" name="name" id="name" data-placeholder="Enter name" {% if
+                        contr %} value="{{ contr.name }}" {% endif %} />
+                </div>
+                <div class="input-grp float-container">
+                    <label for="price">Price(TZS):</label>
+                    <input autocomplete="off" type="text" name="price" id="price" data-placeholder="Enter price in TZS"
+                        {% if contr %} value="{{ contr.price }}" {% endif %} />
+                </div>
+                <div class="input-grp">
+                    <button type="submit">Save</button>
+                </div>
+            </div>
+        </fieldset>
+    </form>
+</div>
+{% endblock %}

@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+
+{% block title %}
+Privileges
+{% endblock %}
+
+{% block breadcrumbs %}
+<ul>
+    <li><a href="/">Home</a></li>
+    <li><span>Privileges</span></li>
+</ul>
+{% endblock %}
+
+{% block content %}
+<div class="content-wrap table-container">
+    <h3>List of privileges</h3>
+    <div class="tablebar">
+        <div class="search">
+            <form action="{{ url_for('privileges.index') }}">
+                <input type="text" name="q" placeholder="Search privileges by name" /><button type="submit" class="search"><i
+                        class="fa fa-search"></i></button>
+            </form>
+        </div>
+        <div class="table-controls">
+            <a href="{{ url_for('privileges.deleteall') }}" class="danger">Delete all</a>
+            <a href="{{ url_for('privileges.manage') }}">Add</a>
+        </div>
+    </div>
+    <table class="manage">
+        <tr>
+            <th>#</th>
+            <th>Name</th>
+            <th>Last update</th>
+            <th>Manage</th>
+        </tr>
+        {% for m in privileges %}
+        <tr>
+            <td>{{ loop.index }}</td>
+            <td>{{ m.name }}</td>
+            <td>{{ m.last_update }}</td>
+            <td>
+                <ul class="manage-btns">
+                    <li class="delete"><a href="{{ url_for('privileges.delete', id=m.id) }}">Delete</a></li>
+                    <li class="edit"><a href="{{ url_for('privileges.manage', id=m.id) }}">Edit</a></li>
+                </ul>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+{% endblock %}

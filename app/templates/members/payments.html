@@ -1,0 +1,81 @@
+{% extends "base.html" %}
+
+{% block title %}
+Payments
+{% endblock %}
+
+{% block breadcrumbs %}
+<ul>
+    <li><a href="/">Home</a></li>
+    <li><a href="/members">Members</a></li>
+    <li><span>Payments</span></li>
+</ul>
+{% endblock %}
+
+{% block content %}
+<div id="member-contributions" class="content-wrap table-container">
+    <div class="profile">
+        <div class="row">
+            <div class="label">Member name: </div>
+            <div class="name">{{ member.name }}</div>
+        </div>
+        <div class="row">
+            <div class="label">Total balance(TZS): </div>
+            <div class="name">10,000</div>
+        </div>
+    </div>
+    <div class="payments">
+        <div class="pending">
+            <h3>List of pending contributions</h3>
+            <table>
+                <tr>
+                    <th>#</th>
+                    <th>Description</th>
+                    <th>Price</th>
+                    <th>Balance</th>
+                </tr>
+                {% for c in pending %}
+                <tr>
+                    <td>{{ loop.index }}</td>
+                    <td>{{ c.name }}</td>
+                    <td>{{ c.price }}</td>
+                    <td>
+                        <div class="pay">
+                            <form action="/members/payments/{{ member.id }}" method="post">
+                                <input type="hidden" name="member_id" value="{{ member.id }}" />
+                                <input type="hidden" name="contribution_id" value="{{ c.contribution_id }}" />
+                                <input type="number" name="amount" placeholder="Enter amount" {% if c.balance is not
+                                    none %} value="{{ c.balance }}" {% else %} value="{{ c.price }}" {% endif %} min="500"
+                                    max="100000" step="500" />
+                                <button type="submit" {% if not c.pending and c.pending is not none %} disabled="disabled"
+                                    {% endif %}>Pay</button>
+                            </form>
+
+                        </div>
+                    </td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+        <div class="recent">
+            <h3>List of recent contributions</h3>
+            {% for p in recent %}
+            <div class="row">
+                <i class="fas fa-angle-right"></i>
+                <ul class="main">
+                    <li>{{ p.pay_date }}
+                        <ul class="details">
+                            <li>{{ p.name }}</li>
+                            <li><span class="amount">TZS: {{ p.amount }}</span></li>
+                        </ul>
+                    </li>
+
+                </ul>
+            </div>
+            {% else %}
+            <i class="norecords">No reconds found</i>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}

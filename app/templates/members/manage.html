@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block title %}
+Members
+{% endblock %}
+
+{% block breadcrumbs %}
+<ul>
+    <li><a href="/">Home</a></li>
+    <li><a href="/members">Members</a></li>
+    <li><span>Manage</span></li>
+</ul>
+{% endblock %}
+
+{% block content %}
+<div class="content-wrap">
+    <h3>{% if member %}Edit {% else %}Add new {% endif %} member</h3>
+    <form class="form" action="/members/manage" method="post">
+        <fieldset>
+            <!--legend>Manage a member</legend-->
+            <input type="hidden" name="id" {% if member %} value="{{ member.id }}" {% endif %} />
+            <div>
+                <div class="input-grp float-container">
+                    <label for="name">Name:</label>
+                    <input autocomplete="off" type="text" name="name" id="name" data-placeholder="Enter name" {% if
+                        member %} value="{{ member.name }}" {% endif %} />
+                </div>
+                <div class="input-grp select">
+                    <label for="name">Group:</label>
+                    <select name="group_id" id="group_id">
+                        {% for g in groups %}
+                        <option {% if member.group %} selected="selected" {% endif %} value="{{ g.id }}">{{ g.name }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="input-grp">
+                    <button type="submit">Save</button>
+                </div>
+            </div>
+        </fieldset>
+    </form>
+</div>
+{% endblock %}

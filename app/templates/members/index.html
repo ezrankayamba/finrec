@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+
+{% block title %}
+Members
+{% endblock %}
+
+{% block breadcrumbs %}
+<ul>
+    <li><a href="/">Home</a></li>
+    <li><span>Members</span></li>
+</ul>
+{% endblock %}
+
+{% block content %}
+<div class="content-wrap table-container">
+    <h3>List of members</h3>
+    {% if msg %}
+    <p class="flash">
+        {{msg}} <span><a href="/members">X</a></span>
+    </p>
+    {% endif %}
+    <div class="tablebar">
+        <div class="search">
+            <form action="/members">
+                <input type="text" name="q" placeholder="Search members by name" /><button type="submit" class="search"><i
+                        class="fa fa-search"></i></button>
+            </form>
+        </div>
+        <div class="table-controls">
+            <a href="/members/deleteall" class="danger">Delete all</a>
+            <a href="/members/manage">Add</a>
+        </div>
+    </div>
+    <table class="manage">
+        <tr>
+            <th>#</th>
+            <th>Name</th>
+            <th>Group</th>
+            <th>Manage</th>
+        </tr>
+        {% for m in members%}
+        <tr>
+            <td>{{ loop.index }}</td>
+            <td>{{ m.name }}</td>
+            <td>{{ m.group.name }}</td>
+            <td>
+                <ul class="manage-btns">
+                    <li class="delete"><a href="/members/delete/{{ m.id }}">Delete</a></li>
+                    <li class="edit"><a href="/members/manage/{{ m.id }}">Edit</a></li>
+                    <li class="edit"><a href="/members/payments/{{ m.id }}">View Contributions</a></li>
+                </ul>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+{% endblock %}
