@@ -1,0 +1,192 @@
+#main-header {
+  padding: 0.4rem;
+  background: #48a999;
+}
+
+#main-header *,
+#main-header *:before,
+#main-header *:after {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+#main-header div.logo {
+  display: inline;
+}
+
+#main-header div.logo img {
+  height: 2rem;
+  width: 100px;
+  padding: 0.4rem;
+}
+
+@media screen and (min-width: 440px) {
+  #main-header div.logo img {
+    height: 30px;
+    width: 140px;
+  }
+}
+
+#main-header div.nav-wrap {
+  float: right;
+  /** Interactions */
+}
+
+#main-header div.nav-wrap .sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
+#main-header div.nav-wrap nav.main-menu {
+  overflow: hidden;
+}
+
+#main-header div.nav-wrap nav.main-menu ul {
+  overflow: hidden;
+}
+
+#main-header div.nav-wrap .menu-toggle {
+  display: inline-block;
+  padding: 0.4rem 8px;
+  color: #ffffff;
+  font-size: 1.2rem;
+}
+
+#main-header div.nav-wrap .menu-toggle:hover, #main-header div.nav-wrap .menu-toggle:focus {
+  color: #ffffff;
+  border: 1px solid #48a999;
+}
+
+#main-header div.nav-wrap .main-menu {
+  background: #48a999;
+  position: absolute;
+  left: -200px;
+  top: 0;
+  height: 100%;
+  -webkit-transition: left 0.3s ease, -webkit-box-shadow 0.3s ease;
+  transition: left 0.3s ease, -webkit-box-shadow 0.3s ease;
+  transition: left 0.3s ease, box-shadow 0.3s ease;
+  transition: left 0.3s ease, box-shadow 0.3s ease, -webkit-box-shadow 0.3s ease;
+  z-index: 999;
+}
+
+#main-header div.nav-wrap .main-menu ul {
+  list-style: none;
+  margin: 0;
+  padding: 0.4rem 0 0;
+  -webkit-box-shadow: -8px 0 8px rgba(0, 0, 0, 0.5);
+          box-shadow: -8px 0 8px rgba(0, 0, 0, 0.5);
+  min-height: 100%;
+  width: 200px;
+}
+
+#main-header div.nav-wrap .main-menu ul li.active a {
+  color: #00e676;
+}
+
+#main-header div.nav-wrap .main-menu ul li.active a:hover {
+  background: none;
+}
+
+#main-header div.nav-wrap .main-menu a {
+  display: block;
+  padding: 0.4rem 15px;
+  color: #fff;
+  text-decoration: none;
+  border-bottom: 1px solid #eee;
+}
+
+#main-header div.nav-wrap .main-menu a.menu-close {
+  position: absolute;
+  right: 0;
+  top: 0;
+  border-bottom: none;
+  color: #004c40;
+  font-size: 1rem;
+  padding: 2px 2px 0.4rem;
+}
+
+#main-header div.nav-wrap .main-menu:target,
+#main-header div.nav-wrap .main-menu[aria-expanded="true"] {
+  left: 0;
+  outline: none;
+  -webkit-box-shadow: 3px 0 12px rgba(0, 0, 0, 0.25);
+  box-shadow: 3px 0 12px rgba(0, 0, 0, 0.25);
+}
+
+#main-header div.nav-wrap .main-menu:target .menu-close,
+#main-header div.nav-wrap .main-menu[aria-expanded="true"] .menu-close {
+  z-index: 1001;
+}
+
+#main-header div.nav-wrap .main-menu:target ul,
+#main-header div.nav-wrap .main-menu[aria-expanded="true"] ul {
+  position: relative;
+  z-index: 1000;
+}
+
+#main-header div.nav-wrap .main-menu:target + .backdrop,
+#main-header div.nav-wrap .main-menu[aria-expanded="true"] + .backdrop {
+  position: absolute;
+  display: block;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 998;
+  background: #000;
+  background: rgba(0, 0, 0, 0.85);
+  cursor: default;
+}
+
+@supports (position: fixed) {
+  #main-header div.nav-wrap .main-menu,
+  #main-header div.nav-wrap .main-menu:target + .backdrop,
+  #main-header div.nav-wrap .main-menu[aria-expanded="true"] + .backdrop {
+    position: fixed;
+  }
+}
+
+@media (min-width: 440px) {
+  #main-header div.nav-wrap .menu-toggle,
+  #main-header div.nav-wrap .main-menu .menu-close {
+    display: none;
+  }
+  #main-header div.nav-wrap .main-menu {
+    position: relative;
+    left: auto;
+    top: auto;
+    height: auto;
+  }
+  #main-header div.nav-wrap .main-menu ul {
+    display: inline;
+    background: none;
+    border: none;
+    -webkit-box-shadow: none;
+            box-shadow: none;
+  }
+  #main-header div.nav-wrap .main-menu ul li {
+    display: inline;
+  }
+  #main-header div.nav-wrap .main-menu ul li a {
+    display: inline-block;
+    border-bottom: none;
+  }
+  #main-header div.nav-wrap .main-menu ul li a:hover {
+    background: rgba(14, 175, 250, 0.212);
+    border-bottom: 2px solid #00e676;
+  }
+  #main-header div.nav-wrap .main-menu ul li.active a {
+    color: #00e676;
+  }
+  #main-header div.nav-wrap .main-menu ul li.active a:hover {
+    background: none;
+  }
+}
+/*# sourceMappingURL=menu.css.map */

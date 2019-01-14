@@ -8,6 +8,7 @@
         <title>{% block title %}{% endblock %} - FXR</title>
         <link rel="stylesheet" href="{{ url_for('static', filename='css/fa/all.css') }}">
         <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/menu.css') }}">
         <script type="text/javascript">
             function closeFlash() {
                 var flash = document.getElementById('flash-container');
@@ -18,23 +19,31 @@
     </head>
 
     <body>
-        <header>
-            <div class="title">
-                <div class="logo">
-                    <img src="{{ url_for('static', filename='img/finrec_logo_croped_540.PNG') }}" alt="" />
-                </div>
-                <ul class="menu-wrap">
-                    <li class="menu-icon">
-                        <a id="menu-icon" href="javascript:void(0);" onclick="menuIconClick()"><i class="fa fa-bars"></i></a>
-                    </li>
-                    <li id="main-nav" class="menus">
-                        <ul>
-                            {% for (n, p, a) in navs %}
-                            <li {% if a: %} class="active" {% endif %}><a href="{{ p }}">{{ n }}</a></li>
-                            {% endfor %}
-                        </ul>
-                    </li>
-                </ul>
+        <header id="main-header">
+            <div class="logo">
+                <img src="{{ url_for('static', filename='img/finrec_logo_croped_540.PNG') }}" alt="" />
+            </div>
+            <div class="nav-wrap">
+                {% if current_user%}
+                <nav id="main-menu" class="main-menu" role="navigation" aria-expanded="false" aria-label="Main menu">
+                    <a href="#main-menu-toggle" class="menu-close" role="button" id="main-menu-close" aria-expanded="false"
+                        aria-controls="main-menu" aria-label="Close main menu">
+                        <span class="sr-only">Close main menu</span>
+                        <span class="fa fa-close" aria-hidden="true"><i class="fas fa-times"></i></span>
+                    </a>
+                    <ul>
+                        {% for (n, p, a) in navs %}
+                        <li {% if a: %} class="active" {% endif %}><a href="{{ p }}">{{ n }}</a></li>
+                        {% endfor %}
+                    </ul>
+                </nav>
+                <a href="#main-menu-toggle" class="backdrop" tabindex="-1" aria-hidden="true" hidden></a>
+                <a href="#main-menu" class="menu-toggle" role="button" id="main-menu-toggle" aria-expanded="false"
+                    aria-controls="main-menu" aria-label="Open main menu">
+                    <!--span class="sr-only">Open main menu</span-->
+                    <span class="fa fa-bars" aria-hidden="true"></span>
+                </a>
+                {% endif %}
             </div>
         </header>
         <main>
@@ -83,7 +92,6 @@
         </footer>
 
         <script src="{{ url_for('static', filename='js/float-label.js') }}"></script>
-        <script src="{{ url_for('static', filename='js/nav-menu.js') }}"></script>
     </body>
 
 </html>
