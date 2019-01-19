@@ -17,16 +17,15 @@ Login
             <input type="password" name="password" id="password" placeholder="Enter your password" />
         </div>
         <div class="controls input-wrap">
-            <div class="checkbox-wrap">
-                <input type="checkbox" name="remember_me" /><label for="remember_me">Remember me</label>
-            </div>
             <button type="submit">Login</button>
+            <input type=hidden value="{{ next or '' }}" name=next />
         </div>
 
         <div class="signup">
             <span>Not registered?</span>
-            <a href="{{ url_for('users.signup') }}">Register here</a>
+            <a href="{{ url_for('users.signup') }}">Register</a>
         </div>
+
     </form>
 
 </div>

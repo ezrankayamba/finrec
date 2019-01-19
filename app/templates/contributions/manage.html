@@ -29,6 +29,14 @@ Members
                     <input autocomplete="off" type="text" name="price" id="price" data-placeholder="Enter price in TZS"
                         {% if contr %} value="{{ contr.price }}" {% endif %} />
                 </div>
+                <div class="input-grp select">
+                    <label for="group_id">Group:</label>
+                    <select name="group_id" id="group_id">
+                        {% for g in groups %}
+                        <option {% if contr.group %} selected="selected" {% endif %} value="{{ g.id }}">{{ g.name }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
                 <div class="input-grp">
                     <button type="submit">Save</button>
                 </div>

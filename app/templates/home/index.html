@@ -21,6 +21,10 @@ Home
         <li>Capture each member contributions</li>
         <li>Generate usable reports</li>
     </ol>
+
+    {% if current_user and current_user.role == 'ADMIN' %}
+    <p>You are admin user: <a href="/admin" class="link">Go to admin area</a></p>
+    {% endif %}
 </div>
 
 {% endblock %}

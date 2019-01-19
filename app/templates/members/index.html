@@ -31,27 +31,31 @@ Members
             <a href="/members/manage">Add</a>
         </div>
     </div>
-    <table class="manage">
-        <tr>
-            <th>#</th>
-            <th>Name</th>
-            <th>Group</th>
-            <th>Manage</th>
-        </tr>
-        {% for m in members%}
-        <tr>
-            <td>{{ loop.index }}</td>
-            <td>{{ m.name }}</td>
-            <td>{{ m.group.name }}</td>
-            <td>
-                <ul class="manage-btns">
-                    <li class="delete"><a href="/members/delete/{{ m.id }}">Delete</a></li>
-                    <li class="edit"><a href="/members/manage/{{ m.id }}">Edit</a></li>
-                    <li class="edit"><a href="/members/payments/{{ m.id }}">View Contributions</a></li>
-                </ul>
-            </td>
-        </tr>
-        {% endfor %}
-    </table>
+    <div class="table-container">
+        <table class="manage">
+            <tr>
+                <th>#</th>
+                <th>Name</th>
+                <th>Group</th>
+                <th>Member role</th>
+                <th>Manage</th>
+            </tr>
+            {% for m in members%}
+            <tr>
+                <td>{{ loop.index }}</td>
+                <td>{{ m.name }}</td>
+                <td>{{ m.group.name }}</td>
+                <td>{{ m.role.name or 'Not set'}} <a href="/members/role/{{ m.id }}"><i class="far fa-edit"></i></a></td>
+                <td>
+                    <ul class="manage-btns">
+                        <li class="delete"><a href="/members/delete/{{ m.id }}">Delete</a></li>
+                        <li class="edit"><a href="/members/manage/{{ m.id }}">Edit</a></li>
+                        <li class="edit"><a href="/members/payments/{{ m.id }}">Contributions</a></li>
+                    </ul>
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
 </div>
 {% endblock %}

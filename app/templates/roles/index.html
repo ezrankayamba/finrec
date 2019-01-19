@@ -26,27 +26,29 @@ Roles
             <a href="{{ url_for('roles.manage') }}">Add</a>
         </div>
     </div>
-    <table class="manage">
-        <tr>
-            <th>#</th>
-            <th>Name</th>
-            <th>Last update</th>
-            <th>Manage</th>
-        </tr>
-        {% for m in roles %}
-        <tr>
-            <td>{{ loop.index }}</td>
-            <td>{{ m.name }}</td>
-            <td>{{ m.last_update }}</td>
-            <td>
-                <ul class="manage-btns">
-                    <li class="delete"><a href="{{ url_for('roles.delete', id=m.id) }}">Delete</a></li>
-                    <li class="edit"><a href="{{ url_for('roles.manage', id=m.id) }}">Edit</a></li>
-                    <li class="edit"><a href="{{ url_for('roles.matrix', id=m.id) }}">Matrix</a></li>
-                </ul>
-            </td>
-        </tr>
-        {% endfor %}
-    </table>
+    <div class="table-container">
+        <table class="manage">
+            <tr>
+                <th>#</th>
+                <th>Name</th>
+                <th>Last update</th>
+                <th>Manage</th>
+            </tr>
+            {% for m in roles %}
+            <tr>
+                <td>{{ loop.index }}</td>
+                <td>{{ m.name }}</td>
+                <td>{{ m.last_update }}</td>
+                <td>
+                    <ul class="manage-btns">
+                        <li class="delete"><a href="{{ url_for('roles.delete', id=m.id) }}">Delete</a></li>
+                        <li class="edit"><a href="{{ url_for('roles.manage', id=m.id) }}">Edit</a></li>
+                        <li class="edit"><a href="{{ url_for('roles.matrix', id=m.id) }}">Matrix</a></li>
+                    </ul>
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
 </div>
 {% endblock %}

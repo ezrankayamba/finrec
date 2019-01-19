@@ -1,5 +1,5 @@
 #main-header {
-  padding: 0.4rem;
+  padding: 0.3rem;
   background: #48a999;
 }
 
@@ -17,7 +17,7 @@
 #main-header div.logo img {
   height: 2rem;
   width: 100px;
-  padding: 0.4rem;
+  padding: 0.3rem;
 }
 
 @media screen and (min-width: 440px) {
@@ -29,6 +29,8 @@
 
 #main-header div.nav-wrap {
   float: right;
+  display: block;
+  height: auto;
   /** Interactions */
 }
 
@@ -53,7 +55,7 @@
 
 #main-header div.nav-wrap .menu-toggle {
   display: inline-block;
-  padding: 0.4rem 8px;
+  padding: 0.3rem 8px;
   color: #ffffff;
   font-size: 1.2rem;
 }
@@ -79,7 +81,7 @@
 #main-header div.nav-wrap .main-menu ul {
   list-style: none;
   margin: 0;
-  padding: 0.4rem 0 0;
+  padding: 0.3rem 0 0;
   -webkit-box-shadow: -8px 0 8px rgba(0, 0, 0, 0.5);
           box-shadow: -8px 0 8px rgba(0, 0, 0, 0.5);
   min-height: 100%;
@@ -96,7 +98,7 @@
 
 #main-header div.nav-wrap .main-menu a {
   display: block;
-  padding: 0.4rem 15px;
+  padding: 0.3rem 15px;
   color: #fff;
   text-decoration: none;
   border-bottom: 1px solid #eee;
@@ -109,7 +111,7 @@
   border-bottom: none;
   color: #004c40;
   font-size: 1rem;
-  padding: 2px 2px 0.4rem;
+  padding: 2px 2px 0.3rem;
 }
 
 #main-header div.nav-wrap .main-menu:target,
@@ -154,6 +156,20 @@
 }
 
 @media (min-width: 440px) {
+  #main-header div.nav-wrap {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+  }
+  #main-header div.nav-wrap div.logo {
+    -webkit-box-flex: 1;
+        -ms-flex: 1;
+            flex: 1;
+  }
+  #main-header div.nav-wrap nav.main-menu {
+    overflow: hidden;
+    height: 100%;
+  }
   #main-header div.nav-wrap .menu-toggle,
   #main-header div.nav-wrap .main-menu .menu-close {
     display: none;

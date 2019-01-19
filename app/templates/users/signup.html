@@ -7,7 +7,7 @@ Login
 {% block content %}
 <div class="content-wrap">
     <form action="{{ url_for('users.signup') }}{% if next %}?next={{ next }}{% endif %}" method="post" id="login-form">
-        <h3>Login form</h3>
+        <h3>Registration form</h3>
         <div class="input-wrap">
             <label for="username">Username</label>
             <input type="text" name="username" id="username" placeholder="Enter your username" />
@@ -17,14 +17,13 @@ Login
             <input type="password" name="password" id="password" placeholder="Enter your password" />
         </div>
         <div class="controls input-wrap">
-            <div class="checkbox-wrap">
-                <input type="checkbox" name="remember_me" /><label for="remember_me">Remember me</label>
-            </div>
-            <button type="submit">Login</button>
+            <button type="submit">Register</button>
         </div>
-        <div class="signup">
-            <span>OR</span>
-            <a href="{{ url_for('users.signup') }}">Register</a>
+        <br />
+        <br />
+        <br />
+        <div class="signup2">
+            You have an account? <a href="{{ url_for('users.login') }}">Login</a>
         </div>
     </form>
 </div>

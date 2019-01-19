@@ -27,6 +27,8 @@
 
     div.nav-wrap {
         float: right;
+        display: block;
+        height: auto;
 
         .sr-only {
             position: absolute;
@@ -151,6 +153,16 @@
         }
 
         @media (min-width: $break-small) {
+            display: flex;
+
+            div.logo {
+                flex: 1;
+            }
+
+            nav.main-menu {
+                overflow: hidden;
+                height: 100%;
+            }
 
             .menu-toggle,
             .main-menu .menu-close {

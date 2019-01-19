@@ -3,7 +3,7 @@
 from flask import render_template, request, redirect, session
 from app import main_nav, db
 from . import contributions
-from app.models import Contribution
+from app.models import Contribution, Group
 from flask_login import login_required
 
 
@@ -32,6 +32,7 @@ def manage(id=None):
             m = Contribution.query.get(id)
             m.name = data['name']
             m.price = data['price']
+            m.group_id = data['group_id']
             # db.session.update(m)
         else:
             m = Contribution(name=data['name'], price=data['price'])
@@ -40,10 +41,11 @@ def manage(id=None):
         return redirect("/contributions", code=302)
     else:
         navs = main_nav('Contributions')
+        groups = Group.query.all()
         contr = None
         if id:
             contr = Contribution.query.get(id)
-        return render_template('contributions/manage.html', navs=navs, title="Contributions", contr=contr)
+        return render_template('contributions/manage.html', navs=navs, title="Contributions", contr=contr, groups=groups)
 
 
 @contributions.route('/delete', methods=['GET'])

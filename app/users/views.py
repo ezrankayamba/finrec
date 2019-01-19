@@ -1,6 +1,6 @@
 # app/home/views.py
 
-from flask import render_template, request, redirect, session, url_for, flash
+from flask import render_template, request, redirect, session, url_for, flash, abort
 from app import main_nav, db, login_manager
 from . import users
 from app.models import User
@@ -8,6 +8,14 @@ from sqlalchemy import text
 from flask_login import current_user, login_user, login_required, logout_user
 import requests
 import json
+from urllib.parse import urljoin, urlparse
+
+
+def is_safe_url(target):
+    ref_url = urlparse(request.host_url)
+    test_url = urlparse(urljoin(request.host_url, str(target)))
+    return test_url.scheme in ('http', 'https') and \
+        ref_url.netloc == test_url.netloc
 
 
 @users.route('/signup', methods=['GET', 'POST'])
@@ -17,16 +25,26 @@ def signup():
         username = data['username']
         password = data['password']
         resp = User.signup_user(username, password)
+        print(resp.text)
         if resp.ok:
-            return redirect(url_for('users.login'))
+            return redirect(url_for('home.index'))
         flash('Registration failed. Try again')
     return render_template('users/signup.html', navs=[])
 
 
+@users.route('/profile', methods=['GET'])
+@login_required
+def profile():
+    navs = main_nav('Home')
+    return render_template('users/profile.html', navs=navs)
+
+
 @users.route('/login', methods=['GET', 'POST'])
 def login():
+    '''
     if current_user.is_authenticated:
         return redirect(url_for('home.index'))
+    '''
     if request.method == 'POST':
         data = request.form
         username = data['username']
@@ -40,11 +58,11 @@ def login():
             session['refresh_token'] = refresh_token
             user = User.get()
             result = login_user(user)
-            next = request.args.get('next')
+            if not is_safe_url(next):
+                return abort(400)
             flash('You are successfully logged in')
-            return redirect(next or url_for('home.index'))
+            return redirect(url_for('home.index'))
         flash('Login failed, try again using correct credentials')
-    next = request.args.get('next')
     return render_template('users/login.html', navs=[], title="Login")
 
 

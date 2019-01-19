@@ -103,42 +103,6 @@ main {
     }
   }
 
-  div.flash {
-    text-align: center;
-
-    div.flashes {
-      background: #FCFCFC;
-      display: inline-block;
-      border: 1px solid color(colorBorder);
-      text-align: center;
-      position: relative;
-      padding: $padding;
-      text-align: left;
-
-      span {
-        position: absolute;
-        right: 0px;
-        top: 0px;
-        font-size: 1rem;
-
-        a {
-          text-decoration: none;
-          margin: 0.36rem;
-          font-weight: bolder;
-          color: color(colorClose);
-        }
-      }
-
-      ul {
-        display: inline-block;
-        margin: 0;
-        list-style: none;
-        margin-top: .5rem;
-        margin-right: 1.2rem;
-      }
-    }
-  }
-
   .card {
     background: #fff;
     border-radius: 2px;
@@ -152,18 +116,17 @@ main {
 
   div.container {
     padding: $padding;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     margin: auto;
 
     @media screen and (min-width: $break-small) {
-      width: 86%;
+      width: 100%;
       padding: 1rem;
+      display: flex;
+      justify-content: space-between;
     }
 
     @media screen and (min-width: $break-medium) {
-      width: 64%;
+      width: 100%;
       padding: 2rem;
     }
 
@@ -173,6 +136,10 @@ main {
       display: flex;
       align-items: center;
       justify-content: center;
+
+      div.table-container {
+        overflow-x: auto;
+      }
 
       .content-wrap.table-container {
         width: 100%;
@@ -184,28 +151,17 @@ main {
           margin-left: $margin;
         }
       }
+    }
 
-      .flash {
-        border: 1px solid color(colorBorder);
-        text-align: center;
-        padding: $padding;
-        border-radius: 0.2rem;
-        position: relative;
+    div.userdetails {
+      padding: $padding;
+      display: block;
 
-        span {
-          position: absolute;
-          right: -4px;
-          top: -4px;
-          font-size: 0.64rem;
-          border-radius: 2px;
-          border: 1px solid color(colorBorder);
-          background: #fff;
-
-          a {
-            text-decoration: none;
-            margin: 0.25rem;
-            font-weight: bolder;
-            color: #ff3333;
+      h3,
+      div {
+        &.row {
+          &.group {
+            white-space: nowrap;
           }
         }
       }
@@ -524,7 +480,7 @@ form.form {
         padding: 5px 12px;
         color: color(primaryTextColor);
         text-align: center;
-        float: right;
+        width: 100%;
         border-radius: .3rem;
       }
     }
@@ -536,10 +492,7 @@ form.form {
 
     a {
       color: color(colorAccent);
-      border: 1px solid #ccc;
       border-radius: 3px;
-      padding: $padding;
-      display: inline-block;
       text-align: center;
       text-decoration: none;
     }
@@ -701,6 +654,35 @@ div.matrix {
       }
     }
   }
+}
+
+div.user-profile {
+  section {
+    padding: 0 0 $padding 0;
+    margin-bottom: $margin;
+
+    ul {
+      list-style: none;
+      padding-left: $padding;
+    }
+  }
+}
+
+.btn {
+  color: color(colorAccent);
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  padding: $padding;
+  display: inline-block;
+  text-align: center;
+  text-decoration: none;
+}
+
+.link {
+  color: color(colorAccent);
+  display: inline-block;
+  text-align: center;
+  text-decoration: none;
 }
 
 footer {

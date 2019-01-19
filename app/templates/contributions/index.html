@@ -31,28 +31,30 @@ Contributions
             <a href="/contributions/manage">Add</a>
         </div>
     </div>
-    <table class="manage">
-        <tr>
-            <th>#</th>
-            <th>Name</th>
-            <th>Price</th>
-            <th>Last update</th>
-            <th>Manage</th>
-        </tr>
-        {% for m in contrs %}
-        <tr>
-            <td>{{ loop.index }}</td>
-            <td>{{ m.name }}</td>
-            <td>{{ m.price }}</td>
-            <td>{{ m.last_update }}</td>
-            <td>
-                <ul class="manage-btns">
-                    <li class="delete"><a href="/contributions/delete/{{ m.id }}">Delete</a></li>
-                    <li class="edit"><a href="/contributions/manage/{{ m.id }}">Edit</a></li>
-                </ul>
-            </td>
-        </tr>
-        {% endfor %}
-    </table>
+    <div class="table-container">
+        <table class="manage">
+            <tr>
+                <th>#</th>
+                <th>Name</th>
+                <th>Price</th>
+                <th>Group</th>
+                <th>Manage</th>
+            </tr>
+            {% for m in contrs %}
+            <tr>
+                <td>{{ loop.index }}</td>
+                <td>{{ m.name }}</td>
+                <td>{{ m.price }}</td>
+                <td>{{ m.group.name }}</td>
+                <td>
+                    <ul class="manage-btns">
+                        <li class="delete"><a href="/contributions/delete/{{ m.id }}">Delete</a></li>
+                        <li class="edit"><a href="/contributions/manage/{{ m.id }}">Edit</a></li>
+                    </ul>
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
 </div>
 {% endblock %}

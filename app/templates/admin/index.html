@@ -2,4 +2,10 @@
 
 {% block body %}
 <p>This is admin area. Get out of here if you are not system admin</p>
+{% if current_user and current_user.role %}
+<i>Your role: {{ current_user.role }}</i>
+{% else %}
+<br />
+<p>You are not logged in as admin. <a href="{{ url_for('users.login') }}">Kindly login here!</a></p>
+{% endif %}
 {% endblock %}

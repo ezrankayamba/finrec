@@ -7,13 +7,26 @@ Groups
 {% block breadcrumbs %}
 <ul>
     <li><a href="/">Home</a></li>
-    <li><a href="/groups">Groups</a></li>
-    <li><span>Manage</span></li>
+    <li><span>My profile</span></li>
 </ul>
 {% endblock %}
 
 {% block content %}
-<div class="content-wrap">
-    <h3>User profile {{ current_user }}</h3>
+<div class="content-wrap user-profile">
+    <section>
+        <h3>User info</h3>
+        <p>Username: {{ current_user.username}}</p>
+        <p>Role: {{ current_user.role or 'None'}}</p>
+    </section>
+    <section>
+        <h3>Member info</h3>
+        <ul>
+            {% for m in current_user.members %}
+            <li>
+                {{ m.name}} ({{ m.group.name }})
+            </li>
+            {% endfor %}
+        </ul>
+    </section>
 </div>
 {% endblock %}

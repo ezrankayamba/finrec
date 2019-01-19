@@ -25,11 +25,10 @@ admin = Admin(name='FX REC', template_mode='bootstrap3')
 
 
 def add_models_to_admin():
-    from flask_admin.contrib.sqla import ModelView
-    from app.models import Role, Privilege, Group
-    admin.add_view(ModelView(Role, db.session))
-    admin.add_view(ModelView(Privilege, db.session))
-    admin.add_view(ModelView(Group, db.session))
+    from app.models import Role, Privilege, Group, AdminModelView
+    admin.add_view(AdminModelView(Role, db.session))
+    admin.add_view(AdminModelView(Privilege, db.session))
+    admin.add_view(AdminModelView(Group, db.session))
 
 
 def main_nav(active):

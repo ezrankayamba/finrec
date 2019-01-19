@@ -1,0 +1,84 @@
+.flash {
+  -webkit-transition: all 2s linear;
+  transition: all 2s linear;
+  visibility: visible;
+  opacity: 1;
+  -webkit-transition: visibility 1.2s, opacity 1.2s linear;
+  transition: visibility 1.2s, opacity 1.2s linear;
+  padding: 0.3rem;
+}
+
+.flash.closed {
+  visibility: hidden;
+  opacity: 0;
+}
+
+.msg-info,
+.msg-success,
+.msg-warning,
+.msg-error {
+  margin: 0;
+  padding: 0.3rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+
+.msg-info div.list,
+.msg-success div.list,
+.msg-warning div.list,
+.msg-error div.list {
+  display: inline;
+  text-align: left;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+}
+
+.msg-info span,
+.msg-success span,
+.msg-warning span,
+.msg-error span {
+  float: right;
+}
+
+.msg-info span a,
+.msg-success span a,
+.msg-warning span a,
+.msg-error span a {
+  color: #004c40;
+}
+
+.msg-info {
+  color: #00529B;
+  background-color: #BDE5F8;
+}
+
+.msg-success {
+  color: #4F8A10;
+  background-color: #DFF2BF;
+}
+
+.msg-warning {
+  color: #9F6000;
+  background-color: #FEEFB3;
+}
+
+.msg-error {
+  color: #D8000C;
+  background-color: #FFD2D2;
+}
+
+.msg-info i,
+.msg-success i,
+.msg-warning i,
+.msg-error i {
+  margin: 0 0.6rem;
+  font-size: 1rem;
+  vertical-align: middle;
+}
+/*# sourceMappingURL=flash.css.map */

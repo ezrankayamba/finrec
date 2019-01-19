@@ -6,13 +6,20 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <title>{% block title %}{% endblock %} - FXR</title>
-        <link rel="stylesheet" href="{{ url_for('static', filename='css/fa/all.css') }}">
-        <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
-        <link rel="stylesheet" href="{{ url_for('static', filename='css/menu.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/fa/all.css') }}" />
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}" />
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/menu.css') }}" />
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/flash.css') }}" />
         <script type="text/javascript">
             function closeFlash() {
                 var flash = document.getElementById('flash-container');
-                flash.parentNode.removeChild(flash);
+                //flash.parentNode.removeChild(flash);
+                flash.classList.add('closed');
+                flash.addEventListener("transitionend", function (event) {
+                    if (flash.parentNode) {
+                        flash.parentNode.removeChild(flash);
+                    }
+                }, false);
             }
 
         </script>
@@ -56,8 +63,6 @@
                 <div class="user">
                     <span>Logged in as: {{ current_user.username }}</span>
                     |
-                    <a href="{{ url_for('users.changepwd') }}">Change password</a>
-                    |
                     <a href="{{ url_for('users.logout') }}">Logout <i class="fas fa-sign-out-alt"></i></a>
                 </div>
                 {% else %}
@@ -70,13 +75,14 @@
             <div class="flash" id="flash-container">
                 {% with messages = get_flashed_messages() %}
                 {% if messages %}
-                <div class="flashes">
-                    <ul>
+                <div class="msg-info">
+                    <i class="fa fa-info-circle"></i>
+                    <div class="list">
                         {% for message in messages %}
-                        <li>{{ message }}</li>
+                        <p>{{ message }}</p>
                         {% endfor %}
-                    </ul>
-                    <span><a href="javascript:void(0);" onclick="closeFlash()"><i class="fas fa-times"></i></a></span>
+                    </div>
+                    <span><a href="javascript:void(0);" onclick="closeFlash()"><i class="fas fa-times"></i></a></span-->
                 </div>
                 {% endif %}
                 {% endwith %}
@@ -85,10 +91,30 @@
                 <div class="content card card-1">
                     {% block content %}{% endblock %}
                 </div>
+                {% if current_user.is_authenticated %}
+                <div class="userdetails card card-1 user-profile">
+                    <section>
+                        <h3>User info</h3>
+                        <p>Username: {{ current_user.username}}</p>
+                        <p>Role: {{ current_user.role or 'None'}}</p>
+                        <a href="{{ url_for('users.changepwd') }}" class="link">Change password</a>
+                    </section>
+                    <section>
+                        <h3>Member info</h3>
+                        <ul>
+                            {% for m in current_user.members %}
+                            <li>
+                                {{ m.name}} ({{ m.group.name }})
+                            </li>
+                            {% endfor %}
+                        </ul>
+                    </section>
+                </div>
+                {% endif %}
             </div>
         </main>
         <footer>
-            <div class="row1">&copy; {{ copyright_year }} | Neza Technologies</div>
+            <div class="row1">&copy; {{ copyright_year }} | Neza Technologies | FX REC</div>
         </footer>
 
         <script src="{{ url_for('static', filename='js/float-label.js') }}"></script>

@@ -1,0 +1,67 @@
+@import "variables";
+
+.flash {
+    transition: all 2s linear;
+    visibility: visible;
+    opacity: 1;
+    transition: visibility 1.2s, opacity 1.2s linear;
+    padding: $padding;
+
+    &.closed {
+        visibility: hidden;
+        opacity: 0;
+    }
+}
+
+.msg-info,
+.msg-success,
+.msg-warning,
+.msg-error {
+    margin: 0;
+    padding: $padding;
+    display: flex;
+    flex-direction: row;
+
+    div.list {
+        display: inline;
+        text-align: left;
+        flex: 1;
+    }
+
+    span {
+        float: right;
+
+        a {
+            color: color(primaryDarkColor);
+        }
+    }
+}
+
+.msg-info {
+    color: #00529B;
+    background-color: #BDE5F8;
+}
+
+.msg-success {
+    color: #4F8A10;
+    background-color: #DFF2BF;
+}
+
+.msg-warning {
+    color: #9F6000;
+    background-color: #FEEFB3;
+}
+
+.msg-error {
+    color: #D8000C;
+    background-color: #FFD2D2;
+}
+
+.msg-info i,
+.msg-success i,
+.msg-warning i,
+.msg-error i {
+    margin: 0 $margin;
+    font-size: 1rem;
+    vertical-align: middle;
+}

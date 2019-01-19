@@ -31,28 +31,30 @@ Groups
             <a href="/groups/manage">Add</a>
         </div>
     </div>
-    <table class="manage">
-        <tr>
-            <th>#</th>
-            <th>Name</th>
-            <th>Sub group of</th>
-            <th>Last update</th>
-            <th>Manage</th>
-        </tr>
-        {% for m in groups %}
-        <tr>
-            <td>{{ loop.index }}</td>
-            <td>{{ m.name }}</td>
-            <td>{{ m.parent }}</td>
-            <td>{{ m.last_update }}</td>
-            <td>
-                <ul class="manage-btns">
-                    <li class="delete"><a href="/groups/delete/{{ m.id }}">Delete</a></li>
-                    <li class="edit"><a href="/groups/manage/{{ m.id }}">Edit</a></li>
-                </ul>
-            </td>
-        </tr>
-        {% endfor %}
-    </table>
+    <div class="table-container">
+        <table class="manage">
+            <tr>
+                <th>#</th>
+                <th>Name</th>
+                <th>Sub group of</th>
+                <th>Last update</th>
+                <th>Manage</th>
+            </tr>
+            {% for m in groups %}
+            <tr>
+                <td>{{ loop.index }}</td>
+                <td>{{ m.name }}</td>
+                <td>{{ m.parent }}</td>
+                <td>{{ m.last_update }}</td>
+                <td>
+                    <ul class="manage-btns">
+                        <li class="delete"><a href="/groups/delete/{{ m.id }}">Delete</a></li>
+                        <li class="edit"><a href="/groups/manage/{{ m.id }}">Edit</a></li>
+                    </ul>
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
 </div>
 {% endblock %}

@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block title %}
+Members
+{% endblock %}
+
+{% block breadcrumbs %}
+<ul>
+    <li><a href="/">Home</a></li>
+    <li><a href="/members">Members</a></li>
+    <li><span>Role</span></li>
+</ul>
+{% endblock %}
+
+{% block content %}
+<div class="content-wrap">
+    <h3>Edit member role</h3>
+    <form class="form" action="{{ url_for('members.role', id=member.id) }}" method="post">
+        <fieldset>
+            <input type="hidden" name="id" {% if member %} value="{{ member.id }}" {% endif %} />
+            <div>
+                <div class="input-grp float-container">
+                    <label for="username">Member login:</label>
+                    <input autocomplete="off" type="text" name="username" id="username" data-placeholder="Enter your username"
+                        value="{{ member.username or '' }}" />
+                </div>
+                <div class="input-grp select">
+                    <label for="role_id">Member role:</label>
+                    <select name="role_id" id="role_id">
+                        {% for r in roles %}
+                        <option {% if member.role_id %} selected="selected" {% endif %} value="{{ r.id }}">{{ r.name }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="input-grp">
+                    <button type="submit">Save</button>
+                </div>
+            </div>
+        </fieldset>
+    </form>
+</div>
+{% endblock %}

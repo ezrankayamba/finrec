@@ -34,6 +34,12 @@ def recent_list(id):
     return db.engine.execute(sql, {'member_id': id})
 
 
+def eligible_roles():
+    sql = text(
+        'select r.* from tbl_role r')
+    return db.engine.execute(sql, {})
+
+
 def eligible_groups():
     sql = text(
         'select g.* from tbl_group g order by g.name asc')
@@ -84,6 +90,27 @@ def manage(id=None):
         if id:
             member = Member.query.get(id)
         return render_template('members/manage.html', navs=navs, title="Members", member=member, groups=groups)
+
+
+@members.route('/role/<id>', methods=['GET', 'POST'])
+@login_required
+def role(id=None):
+    navs = main_nav('Members')
+    if request.method == 'POST':
+        data = request.form
+        id = data['id']
+        if id:
+            m = Member.query.get(id)
+            m.role_id = data['role_id']
+            m.username = data['username']
+        db.session.commit()
+        return redirect("/members", code=302)
+    else:
+        roles = eligible_roles()
+        member = None
+        if id:
+            member = Member.query.get(id)
+        return render_template('members/role.html', navs=navs, title="Members", member=member, roles=roles)
 
 
 @members.route('/delete/<id>')
