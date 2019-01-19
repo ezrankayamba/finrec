@@ -22,28 +22,32 @@ def index():
     return render_template('members/index.html', members=members, navs=navs, title="Members", msg=msg)
 
 
+def into_list(res):
+    return [r for r in res]
+
+
 def pending_list(id):
     sql = text(
         'select * from  vw_member_contributions where member_id = :member_id and (pending =1 or pending is null) order by last_update desc')
-    return db.engine.execute(sql, {'member_id': id})
+    return into_list(db.engine.execute(sql, {'member_id': id}))
 
 
 def recent_list(id):
     sql = text(
         'select c.*, p.amount, p.record_date as pay_date from tbl_payment p left join tbl_contribution c on p.contribution_id = c.id where p.member_id = :member_id order by p.record_date desc limit 3')
-    return db.engine.execute(sql, {'member_id': id})
+    return into_list(db.engine.execute(sql, {'member_id': id}))
 
 
 def eligible_roles():
     sql = text(
         'select r.* from tbl_role r')
-    return db.engine.execute(sql, {})
+    return into_list(db.engine.execute(sql, {}))
 
 
 def eligible_groups():
     sql = text(
         'select g.* from tbl_group g order by g.name asc')
-    return db.engine.execute(sql, {})
+    return into_list(db.engine.execute(sql, {}))
 
 
 @members.route('/payments/<id>', methods=['GET', 'POST'])
@@ -57,12 +61,16 @@ def payments(id=None):
         db.session.add(m)
         db.session.commit()
         return redirect('/members/payments/{}'.format(id), code=302)
-
     else:
         member = Member.query.get(id)
         pending = pending_list(id)
+
+        balance = 0
+        for pc in pending:
+            balance += pc.balance or pc.price
         recent = recent_list(id)
-        return render_template('members/payments.html', navs=navs, title="Members", member=member, pending=pending, recent=recent)
+        print('Pending: ', pending)
+        return render_template('members/payments.html', navs=navs, title="Members", member=member, pending=pending, recent=recent, balance=balance)
 
 
 @members.route('/manage', methods=['GET', 'POST'])

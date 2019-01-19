@@ -568,12 +568,6 @@ div.matrix form div.input-grp button {
 
 #member-contributions div.payments {
   padding: 0.3rem;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
 }
 
 #member-contributions div.payments div.pending,
@@ -621,10 +615,8 @@ div.matrix form div.input-grp button {
   display: inline-block;
 }
 
-#member-contributions div.payments div.pending {
-  -webkit-box-flex: 1;
-      -ms-flex: 1;
-          flex: 1;
+#member-contributions div.payments div.pending.table-container {
+  overflow: auto;
 }
 
 #member-contributions div.payments div.pending table {
