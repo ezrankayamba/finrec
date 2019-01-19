@@ -1,5 +1,7 @@
 @import "variables";
 
+$sbBorderColor: #AAA;
+
 #main-header {
     padding: $padding;
     background: color(primaryLightColor);
@@ -65,10 +67,10 @@
         .main-menu {
             background: color(primaryLightColor);
             position: absolute;
-            left: -200px;
+            right: -200px;
             top: 0;
             height: 100%;
-            transition: left 0.3s ease,
+            transition: right 0.3s ease,
                 box-shadow 0.3s ease;
             z-index: 999;
 
@@ -97,14 +99,14 @@
 
                 color: #fff;
                 text-decoration: none;
-                border-bottom: 1px solid color(colorBorder);
+                border-bottom: 1px solid $sbBorderColor;
 
                 &.menu-close {
                     position: absolute;
                     right: 0;
                     top: 0;
                     border-bottom: none;
-                    color: color(primaryDarkColor);
+                    color: $sbBorderColor;
                     font-size: 1rem;
                     padding: 2px 2px $padding;
                 }
@@ -114,7 +116,7 @@
         /** Interactions */
         .main-menu:target,
         .main-menu[aria-expanded="true"] {
-            left: 0;
+            right: 0;
             outline: none;
             -moz-box-shadow: 3px 0 12px rgba(0, 0, 0, .25);
             -webkit-box-shadow: 3px 0 12px rgba(0, 0, 0, .25);
@@ -122,9 +124,12 @@
 
             .menu-close {
                 z-index: 1001;
+                padding: .2rem .5rem;
+                font-size: 1.5rem;
             }
 
             ul {
+                padding-top: 1.5rem;
                 position: relative;
                 z-index: 1000;
             }

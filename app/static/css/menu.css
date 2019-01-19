@@ -68,13 +68,13 @@
 #main-header div.nav-wrap .main-menu {
   background: #48a999;
   position: absolute;
-  left: -200px;
+  right: -200px;
   top: 0;
   height: 100%;
-  -webkit-transition: left 0.3s ease, -webkit-box-shadow 0.3s ease;
-  transition: left 0.3s ease, -webkit-box-shadow 0.3s ease;
-  transition: left 0.3s ease, box-shadow 0.3s ease;
-  transition: left 0.3s ease, box-shadow 0.3s ease, -webkit-box-shadow 0.3s ease;
+  -webkit-transition: right 0.3s ease, -webkit-box-shadow 0.3s ease;
+  transition: right 0.3s ease, -webkit-box-shadow 0.3s ease;
+  transition: right 0.3s ease, box-shadow 0.3s ease;
+  transition: right 0.3s ease, box-shadow 0.3s ease, -webkit-box-shadow 0.3s ease;
   z-index: 999;
 }
 
@@ -101,7 +101,7 @@
   padding: 0.3rem 15px;
   color: #fff;
   text-decoration: none;
-  border-bottom: 1px solid #eee;
+  border-bottom: 1px solid #AAA;
 }
 
 #main-header div.nav-wrap .main-menu a.menu-close {
@@ -109,14 +109,14 @@
   right: 0;
   top: 0;
   border-bottom: none;
-  color: #004c40;
+  color: #AAA;
   font-size: 1rem;
   padding: 2px 2px 0.3rem;
 }
 
 #main-header div.nav-wrap .main-menu:target,
 #main-header div.nav-wrap .main-menu[aria-expanded="true"] {
-  left: 0;
+  right: 0;
   outline: none;
   -webkit-box-shadow: 3px 0 12px rgba(0, 0, 0, 0.25);
   box-shadow: 3px 0 12px rgba(0, 0, 0, 0.25);
@@ -125,10 +125,13 @@
 #main-header div.nav-wrap .main-menu:target .menu-close,
 #main-header div.nav-wrap .main-menu[aria-expanded="true"] .menu-close {
   z-index: 1001;
+  padding: .2rem .5rem;
+  font-size: 1.5rem;
 }
 
 #main-header div.nav-wrap .main-menu:target ul,
 #main-header div.nav-wrap .main-menu[aria-expanded="true"] ul {
+  padding-top: 1.5rem;
   position: relative;
   z-index: 1000;
 }

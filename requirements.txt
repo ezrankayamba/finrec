@@ -1,1 +1,5 @@
 flask_migrate
+flask
+flask_sqlalchemy
+flask_login
+flask_admin

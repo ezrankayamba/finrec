@@ -8,15 +8,18 @@ RUN apk update \
     && apk del build-dependencies
 
 RUN pip install pymysql
+RUN pip install requests
 
 WORKDIR /app
 COPY . .
 
 ARG ENV_NAME=development
 ARG FLASK_APP=run.py
+ARG CENTRI_JWT_BASE_URL=http://35.196.97.23:6001
 
 ENV FLASK_CONFIG=$ENV_NAME
 ENV FLASK_APP=$FLASK_APP
+ENV CENTRI_JWT_BASE_URL=$CENTRI_JWT_BASE_URL
 
 ENTRYPOINT ["python"]
 CMD ["run.py"]
